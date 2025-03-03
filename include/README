@@ -1,37 +1,60 @@
+📷 Camara Seguridad ESP32-CAM
 
-This directory is intended for project header files.
 
-A header file is a file containing C declarations and macro definitions
-to be shared between several project source files. You request the use of a
-header file in your project source file (C, C++, etc) located in `src` folder
-by including it, with the C preprocessing directive `#include'.
+Proyecto basado en ESP32-CAM desarrollado con PlatformIO.
 
-```src/main.c
+📖 Descripción
+Este proyecto permite capturar imágenes y transmitir video en tiempo real desde un ESP32-CAM, utilizando Arduino framework en PlatformIO.
 
-#include "header.h"
+🚀 Características
+📡 Conexión WiFi para transmitir imágenes.
+🎥 Captura de video en tiempo real.
+💾 Almacenamiento de imágenes en microSD (opcional).
+📜 Interfaz web para visualizar el video (en desarrollo).
+⚙️ Instalación
+1️⃣ Requisitos
+ESP32-CAM con módulo AI-Thinker.
+PlatformIO instalado en VS Code.
+Cable FTDI para cargar el código.
+2️⃣ Clonar el repositorio
+sh
+Copiar
+Editar
+git clone https://github.com/carlospetry77/camara_seguridad.git
+cd camara_seguridad
+3️⃣ Configurar PlatformIO
+Asegúrate de que platformio.ini tenga:
 
-int main (void)
-{
- ...
-}
-```
+ini
+Copiar
+Editar
+[env:esp32cam]
+platform = espressif32
+board = esp32cam
+framework = arduino
+monitor_speed = 115200
+4️⃣ Compilar y subir
+Conecta el ESP32-CAM en modo flash y ejecuta:
 
-Including a header file produces the same results as copying the header file
-into each source file that needs it. Such copying would be time-consuming
-and error-prone. With a header file, the related declarations appear
-in only one place. If they need to be changed, they can be changed in one
-place, and programs that include the header file will automatically use the
-new version when next recompiled. The header file eliminates the labor of
-finding and changing all the copies as well as the risk that a failure to
-find one copy will result in inconsistencies within a program.
-
-In C, the convention is to give header files names that end with `.h'.
-
-Read more about using header files in official GCC documentation:
-
-* Include Syntax
-* Include Operation
-* Once-Only Headers
-* Computed Includes
-
-https://gcc.gnu.org/onlinedocs/cpp/Header-Files.html
+sh
+Copiar
+Editar
+pio run -t upload
+📂 Estructura del Proyecto
+makefile
+Copiar
+Editar
+📂 camara_seguridad
+ ├── 📂 src             # Código fuente
+ │   ├── main.cpp       # Código principal
+ ├── 📂 include         # Archivos de encabezado
+ ├── 📂 lib             # Librerías externas
+ ├── 📂 data            # Archivos para SPIFFS
+ ├── 📄 platformio.ini  # Configuración de PlatformIO
+ ├── 📄 README.md       # Documentación
+🛠 Tecnologías
+PlatformIO
+ESP32-CAM AI-Thinker
+Arduino Framework
+📧 Contacto
+Si tienes preguntas, abre un Issue o contáctame en GitHub.
