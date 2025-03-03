@@ -1,6 +1,8 @@
 //libraries
 #include <Arduino.h>
 #include <esp_camera.h>
+#include <config.h> 
+#include <WiFi.h>
 
 //Input Output definitions
 #define pushBtn 16
@@ -25,6 +27,10 @@
 #define HREF_GPIO_NUM    23
 #define PCLK_GPIO_NUM    22
 
+// 🌐 WiFi credentials
+const char* ssid = WIFI_SSID;
+const char* password = WIFI_PASSWORD;
+
 
 //Setup function
 void setup() {
@@ -32,6 +38,7 @@ void setup() {
   pinMode(pushBtn, INPUT_PULLUP);
   pinMode(led,OUTPUT);
   Serial.println("📸 Iniciando cámara...");
+  
   //Config camera
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
@@ -73,6 +80,17 @@ void setup() {
       return;
   }
   Serial.println("✅ Cámara iniciada con éxito");
+
+  // WiFi conn
+    Serial.print("Conectando a WiFi...");
+    WiFi.begin(ssid, password);
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+    }
+    Serial.println("\n✅ WiFi conectado");
+
+
 }
 
 
